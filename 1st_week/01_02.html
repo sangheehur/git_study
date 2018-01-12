@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -9,10 +9,21 @@
   <body>
   <div id='app'>
     {{message}}
+    {{message}}알겠니?
+  </div>
+  <div id='app2'>
+    {{message}}
+    {{message}}모르겠니?
   </div>
   <script>
     new Vue({
       el:'#app',    //적용할 css셀럭터를 지정한다
+      data: {
+        message: 'Hello, Vue!'   //message로 데이터를 전달한다
+      }
+    });
+    new Vue({
+      el:'#app2',    //적용할 css셀럭터를 지정한다
       data: {
         message: 'Hello, Vue!'   //message로 데이터를 전달한다
       }
