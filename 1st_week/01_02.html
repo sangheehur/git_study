@@ -7,25 +7,37 @@
     <script src="https://unpkg.com/vue@2.3"></script>
   </head>
   <body>
-  <div id='app'>
-    {{message}}
-    {{message}}알겠니?
+  <div id='app1'>
+      {{message}}입니다. <!--이중괄호를 이용한 데이터바인딩-->
   </div>
+
   <div id='app2'>
-    {{message}}
-    {{message}}모르겠니?
+      <h1>2. <span v-text="message"></span>입니다.</h1><!--v-text를 이용한 데이터바인딩인데 태그의 속성으로 표현-->
+</div>
+
+  <div id='app3'>
+    <p>
+      <span v-html="message"><h1>입니다.</h1></span> <!--v-html을 이용한 데이터바인딩, html 태그를 그대로 치환함-->
+    </p>
   </div>
+
   <script>
     new Vue({
-      el:'#app',    //적용할 css셀럭터를 지정한다
+      el:'#app1',    //적용할 css셀럭터를 지정한다
       data: {
-        message: 'Hello, Vue!'   //message로 데이터를 전달한다
+        message: '1. 이중괄호(mustache)를 이용한 데이터바인딩'   //message로 데이터를 전달한다
       }
     });
     new Vue({
       el:'#app2',    //적용할 css셀럭터를 지정한다
       data: {
-        message: 'Hello, Vue!'   //message로 데이터를 전달한다
+        message: 'v-text를 이용한 데이터바인딩'   //message로 데이터를 전달한다
+      }
+    });
+    new Vue({
+      el:'#app3',    //적용할 css셀럭터를 지정한다
+      data: {
+        message: '<h1>3. 데이터바인딩에 HTML 적용</h1>'   //message로 데이터를 전달한다
       }
     });
   </script>
