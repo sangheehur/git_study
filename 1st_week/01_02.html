@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width">
+    <script src="https://unpkg.com/vue@2.3"></script>
+  </head>
+  <body>
+  <div id='app'>
+    {{message}}
+  </div>
+  <script>
+    new Vue({
+      el:'#app',    //적용할 css셀럭터를 지정한다
+      data: {
+        message: 'Hello, Vue!'   //message로 데이터를 전달한다
+      }
+    });
+  </script>
+  </body>
+</html>
