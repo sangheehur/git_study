@@ -7,26 +7,26 @@
   <title>JS Bin</title>
 </head>
 <body>
-<div>
+<div id="app">
   <!-- 아래 태그가 바로 만든 컴포넌트들입니다-->
   <scu-test></scu-test>
   <scu-test></scu-test>
   <scu-test></scu-test>
   </div>
 
-  <script>
-Vue.component('scu-test',{
-  template: "<div>{{ now }}</div>",
-  data: function(){  //컴포넌트에서 data는 항상 함수형태로 사용한다..
-    return {
-      now : new Date()
+<script>
+  Vue.component('scu-test',{
+    template: "<div>{{ now }}</div>",
+    data: function(){  //컴포넌트에서 data는 항상 함수형태로 사용한다..
+      return {
+        now : new Date()
+      }
     }
-  }
-})
-new Vue({
-  el:'#app'
-});
-  </script>
+  })
+  new Vue({
+    el:'#app'
+  });
+</script>
 
 </body>
 </html>
