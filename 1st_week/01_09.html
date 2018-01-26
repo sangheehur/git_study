@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://unpkg.com/vue@2.3"></script>
+  <title>JS Bin</title>
+</head>
+<body>
+<!-- 아래 태그가 바로 만든 컴포넌트들입니다-->
+<div id='app'>
+      <scu-component></scu-component>
+      <scu-component></scu-component>
+      <scu-component></scu-component>
+</div>
+<!-- 글로벌이 아닌 로컬컴포넌트를 사용하는 예제-->
+<script>
+    var optionSCUcomponent = {
+      template: '<div>{{now}}</div>',
+      data: function(){
+        return {
+          now: new Date()
+        }
+      }
+    }
+    new Vue({
+      el: '#app',
+      components: {
+        'scu-component' : optionSCUcomponent
+        // 왜 optionSCUcomponent가 아니라 scu-component에 따옴표가 붙는지 이해가 안갑니다.
+        //optionSCUcomponent가 값일 텐데......
+        
+      }
+    });
+</script>
+
+</body>
+</html>
