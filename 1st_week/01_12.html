@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/vue@2.3"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 이게 자식콤포넌트라고 생각됨 -->
+    <scu-component message="Props로 자식콤포넌트에 데이터를 전달"></scu-component>
+    <!-- 의문점: 자식컴포넌트에 전달할 데이터를 적었으면서 이게 무슨 데이터를 전달했다는 건지 모르겠음. message에 들어갈 말을 위에 다 적어넣고 데이터를 전달한다? 이해가 잘 안감.. -->
+  </div>
+  <script type="text/javascript">
+    // 이게 부모콤포넌트라고 생각됨
+    var scucomponent = {
+      //props를 정의합니다.
+      props: ['message'], // props는 배열의 형태로만 사용하는 듯
+      template: '<div>{{message}}</div>'
+    };
+    new Vue({
+      el:'#app',
+      components:{
+        'scu-component': scucomponent
+      }
+    });
+  </script>
+
+
+</body>
+</html>
