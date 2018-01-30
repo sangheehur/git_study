@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/vue@2.3"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id='app'>
+    <!-- increment라는 사용자가 만든 이벤트를 v-on으로 연결시킴 -->
+    <counter-component v-on:increment="incrementTotal"></counter-component>
+    <counter-component v-on:increment="incrementTotal"></counter-component>
+    <p>Total: {{total}}</p>
+  </div>
+
+
+  <script type="text/javascript">
+    var counterComponent = {
+      template: '<button @click="increment">{{counter}}</button>',
+      data: function() {
+        return {
+            counter:0
+        };
+      },
+      methods: {    //사용자 정의이벤트 만들기
+        increment: function() {
+          this.counter += 1;
+          this.$emit('increment');
+        }
+      }
+    };
+    new Vue({
+      el:'#app',
+      data: {
+        total:0
+      },
+      methods: {
+        incrementTotal: function() {
+          this.total += 1;
+        }
+      },
+      components: {
+        'counter-component': counterComponent
+      }
+    });
+  </script>
+</body>
+</html>
