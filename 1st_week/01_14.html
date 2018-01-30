@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@2.3"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id='app'>
+    이전의 props는 정적인바인당, 즉 스트링타입만 전달했지만<br />이번의 동적 props는 Number, object, list 데이터 등을 전달할 수 있다.
+    <br /><br />
+    <input type="text" v-model="message" />
+    <scu-component :message="message"></scu-component>
+  </div>
+
+  <script type="text/javascript">
+    var comOption = {
+      props: ['message'],
+      template: '<div>{{message}}</div>'
+    };
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello, Vue!'
+      },
+      components: {
+        'scu-component': comOption
+      }
+    });
+  </script>
+
+</body>
+</html>
