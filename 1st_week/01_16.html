@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/vue@2.3"></script>
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h3>{{message}}</h3>
+    <my-global-component></my-global-component>
+    <my-local-component></my-local-component>
+  </header>
+  <p>이제 글로벌컴포넌트와 로컬컴포넌트의 차이를 이해할 수 있을 것 같습니다.<br />
+    글로벌컴포넌트는 한번 등록만하면 몇 번이던지 사용이 가능합니다. (인스턴스에서 'el' 속성만 지정)<br />
+    반면 로컬컴포넌트는 사용할 때마다 인스턴스 생성(new Vue)을 새로 해서<br />
+    'el'은 물론컴포넌트 속성(components:{})을 다시 등록해줘야만 합니다. </p>
+</div>
+<!-- 글로벌 컴포넌트와 로컬 컴포넌트의 차이점을 보여주는 예제. 내부 주석문도 확인바람
+전역이던 지역이든 컴포넌트를 만들면 반드시 인스턴스가 필요한데 지역은 인스턴스 이름이 달라지면 컴포넌트를 새로 등록해줘야 함.
+전역은 인스턴스 이름이 달라져도 무관함 -->
+<div id='app2'>
+    <my-global-component></my-global-component>
+</div>
+
+<script type="text/javascript">
+  Vue.component('my-global-component',{
+    template: '<p>This is another global child component</p>'
+  });
+  var cmp = {
+    template: '<p>This is another local child component</p>'
+  };
+  new Vue({
+    el: '#app',
+    data: {
+      message: 'This is parent component'
+    },
+    components: {
+      'my-local-component': cmp
+    }
+  }),
+  new Vue({
+    el: '#app2',
+    data: {
+      message: 'This is parent component'
+    },
+    // components: { 컴포넌트 속성을 정의해주지 않으면 위에 정의했더라도 실행이 안됨. 즉 인스턴스 생성시마다 지정을 해줘야 함.
+    //   'my-local-component': cmp
+    // }
+  })
+
+
+</script>
+</body>
+</html>
